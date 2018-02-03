@@ -10,7 +10,8 @@ module.exports = {
   ],
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'app.js'
+    filename: 'app.js',
+    publicPath: '/dist/'
   },
   devtool: 'cheap-module-source-map',
   module: {
@@ -31,5 +32,15 @@ module.exports = {
         }
       }]
     }]
-  }
+  },
+  devServer: {
+    contentBase: './',
+    hot: true,
+    port: 5000,
+    
+  },
+  plugins: [
+    // new webpack.NamedModulesPlugin(),
+    new webpack.HotModuleReplacementPlugin()
+  ]
 }
